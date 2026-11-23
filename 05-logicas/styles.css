@@ -1,0 +1,13 @@
+/* Estilos de Lógicas y funcionales (el mismo CSS que ves en cada demo) */
+.crd3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%}.crd3>div{padding:1rem;background:#EEF2EB;border-radius:6px;text-align:center;transition:.2s}
+.ln{list-style:none;padding:0;margin:0;width:100%}
+.ln li{padding:.4rem .7rem;margin:2px 0;background:#EEF2EB}
+.ln li:not(.x){background:var(--verde);color:#fff}
+
+.isw :is(h4,h5){background:var(--tinta);color:#fff;padding:.3rem .6rem;margin:.2rem 0}
+:where(.isw) p{color:var(--rojo)}
+.isw .pp{color:var(--verde-osc)}
+
+.th{display:flex;gap:.6rem;padding:.8rem 1rem;border:2px solid var(--linea);border-radius:8px;width:100%;transition:.2s}
+.th:has(input:checked){background:#EEF8E6;border-color:var(--verde);box-shadow:0 4px 0 var(--verde)}
+.crd3:has(> div:hover) > div:not(:hover){opacity:.35;transform:scale(.96)}

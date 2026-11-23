@@ -1,0 +1,20 @@
+/* Estilos de Idioma, dirección y estado (el mismo CSS que ves en cada demo) */
+dialog::backdrop{background:#00304D99}
+.lg{padding-left:.6rem;border-left:5px solid}
+.lg:lang(es){border-color:var(--verde)}
+.lg:lang(en){border-color:var(--amarillo)}
+.lg:lang(fr){border-color:var(--rojo)}
+.dr{padding:.4rem .6rem;width:100%}
+.dr:dir(ltr){border-left:5px solid var(--tinta)}
+.dr:dir(rtl){border-right:5px solid var(--rojo);text-align:right}
+
+.det{width:100%;border:2px solid var(--linea);padding:.5rem .8rem;border-radius:6px}
+.det:open{border-color:var(--verde);background:#EEF8E6}
+.det summary{cursor:pointer;font-weight:600}
+
+.dg{border:3px dashed var(--linea);border-radius:8px;padding:1.2rem}
+.dg:modal{border:3px solid var(--verde)}
+.pp2:popover-open{border:3px solid var(--amarillo);padding:1rem;border-radius:8px}
+
+.fs{padding:1rem;background:#EEF2EB;border-radius:6px;width:100%}
+.fs:fullscreen{display:grid;place-items:center;background:var(--tinta);color:#fff;font-size:2rem}

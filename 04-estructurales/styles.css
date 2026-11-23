@@ -1,0 +1,21 @@
+/* Estilos de Estructurales (el mismo CSS que ves en cada demo) */
+.nth,.li1,.ty{list-style:none;margin:0;padding:0;width:100%;display:flex;flex-direction:column;gap:3px}.nth li,.li1 li,.ty>*{padding:.35rem .7rem;background:#EEF2EB;margin:0}
+.li1 li:first-child{background:var(--verde);color:#fff}
+.li1 li:last-child{background:var(--tinta);color:#fff}
+.li1 li:only-child{background:var(--amarillo);font-weight:700}
+
+.nth li:nth-child(2n){background:var(--amarillo);font-weight:700}
+.nth li:nth-last-child(2){outline:2px solid var(--rojo);outline-offset:-2px}
+
+.ty p:first-of-type{background:var(--verde);color:#fff}
+.ty p:last-of-type{background:var(--tinta);color:#fff}
+.ty p:nth-of-type(2){outline:2px solid var(--amarillo);outline-offset:-2px}
+.ty p:nth-last-of-type(2){outline:2px dotted var(--rojo);outline-offset:-2px}
+.ty span:only-of-type{background:var(--amarillo);font-weight:700}
+
+.ev{display:flex;gap:8px;width:100%}
+.vac{flex:1;min-height:2.6rem;padding:.5rem;border:2px solid var(--verde);border-radius:4px}
+.vac:empty{border:2px dashed var(--rojo);background:repeating-linear-gradient(45deg,#FDEEEA,#FDEEEA 6px,#fff 6px,#fff 12px)}
+
+:root{--acento:#FDC300}
+.rt{background:var(--acento);padding:.8rem;border-radius:6px;width:100%;font-weight:600}

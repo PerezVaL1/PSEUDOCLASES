@@ -1,0 +1,27 @@
+/* Estilos de Formularios (el mismo CSS que ves en cada demo) */
+
+.fe:enabled{border-color:var(--verde)}
+.fe:disabled,.fbtn:disabled{background:#E5E8E3;border-style:dashed;cursor:not-allowed;color:#8A948F}
+
+.ck input{accent-color:var(--verde)}
+.ck:has(input:checked){font-weight:700;color:var(--verde-osc)}
+.ind:indeterminate{outline:3px solid var(--amarillo);outline-offset:2px}
+
+.fr:required{border-left:6px solid var(--rojo)}
+.fr:optional{border-left:6px solid var(--linea)}
+.fr:placeholder-shown{background:#FFFBEA}
+
+.fv:valid{border-color:var(--verde);background:#EEF8E6}
+.fv:invalid{border-color:var(--rojo);background:#FDEEEA}
+.fu:user-invalid{border-color:var(--rojo);background:#FDEEEA}
+.fu:user-valid{border-color:var(--verde);background:#EEF8E6}
+
+.fn:in-range{border-color:var(--verde)}
+.fn:out-of-range{border-color:var(--rojo);background:#FDEEEA;color:var(--rojo)}
+
+.frw:read-only{background:#ECEFEA;color:var(--gris)}
+.frw:read-write{border-color:var(--verde)}
+.fdef input:default+*{color:var(--verde-osc)}
+.fdef button:default{background:var(--tinta);color:#fff}
+
+.fa:autofill{box-shadow:inset 0 0 0 40px #FDF3C0;border-color:var(--amarillo)}

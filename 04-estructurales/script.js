@@ -1,0 +1,1 @@
+function aplicarNth(d,f){let st=d.querySelector('style.dyn');if(!st){st=document.createElement('style');st.className='dyn';d.append(st)}d.querySelector('.frm').value=f;st.textContent='.nth li:nth-child('+f+'){background:var(--amarillo);font-weight:700}';return ':nth-child('+f+')'}

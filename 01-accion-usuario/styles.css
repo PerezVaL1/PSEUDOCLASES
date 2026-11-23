@@ -1,0 +1,10 @@
+/* Estilos de Acción del usuario (el mismo CSS que ves en cada demo) */
+
+.b1{padding:.6rem 1.2rem;border:2px solid var(--tinta);background:#fff;border-radius:6px;transition:.15s}
+.b1:hover{background:var(--verde);color:#fff;border-color:var(--verde)}
+.b1:active{transform:scale(.92);background:var(--verde-osc)}
+
+.fg{display:flex;gap:.5rem;flex-wrap:wrap;padding:.8rem;border:2px dashed var(--linea);border-radius:8px}
+.fg:focus-within{border-color:var(--verde);background:#EEF8E6}
+.fi:focus{outline:none;border-color:var(--amarillo);box-shadow:0 0 0 3px #FDC30066}
+.fb:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}

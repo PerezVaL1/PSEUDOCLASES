@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acción del usuario · Pseudoclases CSS</title>
+<link rel="stylesheet" href="../assets/base.css"><link rel="stylesheet" href="styles.css"></head>
+<body><header class="top"><h1>Acción del usuario</h1><p>Reaccionan a lo que hace la persona: mouse, teclado y foco.</p><nav aria-label="Carpetas"><a href="../index.html">Inicio</a><a href="../01-accion-usuario/index.html" aria-current="page">01 Acción del usuario</a><a href="../02-enlaces-ubicacion/index.html">02 Enlaces y ubicación</a><a href="../03-formularios/index.html">03 Formularios</a><a href="../04-estructurales/index.html">04 Estructurales</a><a href="../05-logicas/index.html">05 Lógicas y funcionales</a><a href="../06-idioma-y-estado/index.html">06 Idioma, dirección y estado</a><a href="../07-multimedia/index.html">07 Multimedia</a><a href="../08-shadow-dom/index.html">08 Shadow DOM y componentes</a><a href="../09-compatibilidad/index.html">09 Detector de compatibilidad</a></nav></header>
+<main>
+<article class="demo" id="hover">
+<header><h3><code>:hover</code><code>:active</code></h3><p>Pasa el mouse y mantén presionado el clic.</p></header>
+<div><div class="stage"><button class="b1">Presióname</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.b1{padding:.6rem 1.2rem;border:2px solid var(--tinta);background:#fff;border-radius:6px;transition:.15s}
+.b1:hover{background:var(--verde);color:#fff;border-color:var(--verde)}
+.b1:active{transform:scale(.92);background:var(--verde-osc)}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;button class=&quot;b1&quot;&gt;Presióname&lt;/button&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="foco">
+<header><h3><code>:focus</code><code>:focus-visible</code><code>:focus-within</code></h3><p>Usa Tab para recorrer. El contenedor reacciona cuando algo dentro tiene foco.</p></header>
+<div><div class="stage"><div class="fg"><input class="fi" placeholder="Escribe aquí"><button class="fb">Botón</button><button class="fb">Otro botón</button></div></div><div class="ctl"><button type="button" data-js="d.querySelector(&#x27;.fi&#x27;).focus()">Enfocar el campo</button><button type="button" data-js="d.querySelector(&#x27;.fb&#x27;).focus()">Enfocar un botón</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.fg{display:flex;gap:.5rem;flex-wrap:wrap;padding:.8rem;border:2px dashed var(--linea);border-radius:8px}
+.fg:focus-within{border-color:var(--verde);background:#EEF8E6}
+.fi:focus{outline:none;border-color:var(--amarillo);box-shadow:0 0 0 3px #FDC30066}
+.fb:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;div class=&quot;fg&quot;&gt;&lt;input class=&quot;fi&quot; placeholder=&quot;Escribe aquí&quot;&gt;&lt;button class=&quot;fb&quot;&gt;Botón&lt;/button&gt;&lt;button class=&quot;fb&quot;&gt;Otro botón&lt;/button&gt;&lt;/div&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+</main>
+<script src="../assets/app.js"></script><script src="script.js"></script></body></html>

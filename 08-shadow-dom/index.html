@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shadow DOM y componentes · Pseudoclases CSS</title>
+<link rel="stylesheet" href="../assets/base.css"><link rel="stylesheet" href="styles.css"></head>
+<body><header class="top"><h1>Shadow DOM y componentes</h1><p>Pseudoclases para Web Components. El CSS de la tarjeta vive dentro del shadow root (ver script.js).</p><nav aria-label="Carpetas"><a href="../index.html">Inicio</a><a href="../01-accion-usuario/index.html">01 Acción del usuario</a><a href="../02-enlaces-ubicacion/index.html">02 Enlaces y ubicación</a><a href="../03-formularios/index.html">03 Formularios</a><a href="../04-estructurales/index.html">04 Estructurales</a><a href="../05-logicas/index.html">05 Lógicas y funcionales</a><a href="../06-idioma-y-estado/index.html">06 Idioma, dirección y estado</a><a href="../07-multimedia/index.html">07 Multimedia</a><a href="../08-shadow-dom/index.html" aria-current="page">08 Shadow DOM y componentes</a><a href="../09-compatibilidad/index.html">09 Detector de compatibilidad</a></nav></header>
+<main>
+<article class="demo" id="host">
+<header><h3><code>:host</code><code>:host()</code><code>:host-context()</code><code>:has-slotted</code></h3><p>:host-context() solo existe en Chrome y Safari; :has-slotted es muy reciente.</p></header>
+<div><div class="stage"><tarjeta-x><span slot="titulo">Título</span>Contenido de la tarjeta.</tarjeta-x></div><div class="ctl"><button type="button" data-js="d.querySelector(&#x27;tarjeta-x&#x27;).classList.toggle(&#x27;activa&#x27;)">Alternar .activa</button><button type="button" data-js="d.classList.toggle(&#x27;oscuro&#x27;)">Alternar tema oscuro</button><button type="button" data-js="const t=d.querySelector(&#x27;tarjeta-x&#x27;);if(!t.querySelector(&#x27;[slot=extra]&#x27;)){const s=document.createElement(&#x27;small&#x27;);s.slot=&#x27;extra&#x27;;s.textContent=&#x27;Contenido extra&#x27;;t.append(s)}">Añadir slot extra</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>/* dentro del Shadow DOM (script.js) */
+:host{display:block;padding:.8rem;border:2px solid #CBD6C6;border-radius:8px;background:#fff}
+:host(.activa){border-color:#39A900;box-shadow:0 4px 0 #39A900}
+:host-context(.oscuro){background:#00304D;color:#fff}
+::slotted([slot=titulo]){margin:0 0 .3rem;font-weight:700}
+slot[name=extra]:has-slotted{display:block;border-top:1px dashed currentColor;margin-top:.5rem}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;tarjeta-x&gt;&lt;span slot=&quot;titulo&quot;&gt;Título&lt;/span&gt;Contenido de la tarjeta.&lt;/tarjeta-x&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="state">
+<header><h3><code>:state()</code></h3><p>Estados personalizados definidos con ElementInternals.states.</p></header>
+<div><div class="stage"><boton-x>Guardar</boton-x></div><div class="ctl"><button type="button" data-js="const s=d.querySelector(&#x27;boton-x&#x27;)._i.states;s.has(&#x27;cargando&#x27;)?s.delete(&#x27;cargando&#x27;):s.add(&#x27;cargando&#x27;);return &#x27;cargando = &#x27;+s.has(&#x27;cargando&#x27;)">Alternar estado «cargando»</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>boton-x{display:inline-block;padding:.5rem 1rem;border:2px solid var(--tinta);border-radius:6px}
+boton-x:state(cargando){background:var(--amarillo);border-style:dashed}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;boton-x&gt;Guardar&lt;/boton-x&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="defined">
+<header><h3><code>:defined</code></h3><p>El elemento no está “definido” hasta registrarlo con customElements.define().</p></header>
+<div><div class="stage"><lazy-x>Aún sin definir</lazy-x></div><div class="ctl"><button type="button" data-js="if(!customElements.get(&#x27;lazy-x&#x27;))customElements.define(&#x27;lazy-x&#x27;,class extends HTMLElement{connectedCallback(){this.textContent=&#x27;¡Ya estoy definido!&#x27;}})">Definir &lt;lazy-x&gt;</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>lazy-x{display:block;padding:.6rem;border-radius:6px;width:100%}
+lazy-x:not(:defined){background:#FDEEEA;color:var(--rojo)}
+lazy-x:defined{background:#EEF8E6;color:var(--verde-osc)}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;lazy-x&gt;Aún sin definir&lt;/lazy-x&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+</main>
+<script src="../assets/app.js"></script><script src="script.js"></script></body></html>

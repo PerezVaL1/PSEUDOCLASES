@@ -1,0 +1,8 @@
+/* Estilos de Shadow DOM y componentes (el mismo CSS que ves en cada demo) */
+
+boton-x{display:inline-block;padding:.5rem 1rem;border:2px solid var(--tinta);border-radius:6px}
+boton-x:state(cargando){background:var(--amarillo);border-style:dashed}
+
+lazy-x{display:block;padding:.6rem;border-radius:6px;width:100%}
+lazy-x:not(:defined){background:#FDEEEA;color:var(--rojo)}
+lazy-x:defined{background:#EEF8E6;color:var(--verde-osc)}

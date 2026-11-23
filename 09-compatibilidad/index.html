@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detector de compatibilidad · Pseudoclases CSS</title>
+<link rel="stylesheet" href="../assets/base.css"><link rel="stylesheet" href="styles.css"></head>
+<body><header class="top"><h1>Detector de compatibilidad</h1><p>Lista de todas las pseudoclases y prueba en vivo cuáles entiende tu navegador.</p><nav aria-label="Carpetas"><a href="../index.html">Inicio</a><a href="../01-accion-usuario/index.html">01 Acción del usuario</a><a href="../02-enlaces-ubicacion/index.html">02 Enlaces y ubicación</a><a href="../03-formularios/index.html">03 Formularios</a><a href="../04-estructurales/index.html">04 Estructurales</a><a href="../05-logicas/index.html">05 Lógicas y funcionales</a><a href="../06-idioma-y-estado/index.html">06 Idioma, dirección y estado</a><a href="../07-multimedia/index.html">07 Multimedia</a><a href="../08-shadow-dom/index.html">08 Shadow DOM y componentes</a><a href="../09-compatibilidad/index.html" aria-current="page">09 Detector de compatibilidad</a></nav></header>
+<main>
+<article class="demo" id="detector">
+<header><h3><code>Todas</code></h3><p>Usa CSS.supports(&quot;selector(...)&quot;) para probar cada una.</p></header>
+<div><div class="stage"><input id="flt" placeholder="Filtrar (ej. :nth)"><label class="ck"><input type="checkbox" id="solo"> Solo las no soportadas</label><p id="resumen"></p><div id="lista"></div></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>if(CSS.supports(&quot;selector(:has(a))&quot;)){
+  /* el navegador entiende :has() */
+}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;input id=&quot;flt&quot; placeholder=&quot;Filtrar (ej. :nth)&quot;&gt;&lt;label class=&quot;ck&quot;&gt;&lt;input type=&quot;checkbox&quot; id=&quot;solo&quot;&gt; Solo las no soportadas&lt;/label&gt;&lt;p id=&quot;resumen&quot;&gt;&lt;/p&gt;&lt;div id=&quot;lista&quot;&gt;&lt;/div&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="pagina">
+<header><h3><code>:first</code><code>:left</code><code>:right</code></h3><p>Solo funcionan dentro de @page y se ven al imprimir.</p></header>
+<div><div class="stage"><p>Pulsa el botón y revisa los márgenes distintos en la vista previa.</p></div><div class="ctl"><button type="button" data-js="window.print()">Imprimir (vista previa)</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>@page{size:A4}
+@page :first{margin-top:4cm}
+@page :left{margin-right:3cm}
+@page :right{margin-left:3cm}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;p&gt;Pulsa el botón y revisa los márgenes distintos en la vista previa.&lt;/p&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+</main>
+<script src="../assets/app.js"></script><script src="script.js"></script></body></html>

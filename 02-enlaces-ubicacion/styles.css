@@ -1,0 +1,17 @@
+/* Estilos de Enlaces y ubicación (el mismo CSS que ves en cada demo) */
+.cj{padding:.6rem;background:#eee;border-radius:6px;width:100%}
+.lk:link{color:var(--verde-osc);font-weight:600}
+.lk:visited{color:#7B3FA0}
+.lk:any-link{text-decoration-thickness:2px;text-underline-offset:4px}
+.lk:not(:any-link){color:var(--gris)}
+
+.cj:target{background:var(--amarillo);font-weight:700;box-shadow:0 0 0 4px #FDC30066}
+
+.tw{padding:.7rem;border:2px solid var(--linea);border-radius:8px;width:100%}
+.tw:has(:target){border-color:var(--verde);background:#EEF8E6}
+@supports selector(:target-within){.tw:target-within{border-width:4px}}
+
+@scope (.sc){
+  :scope{border:2px solid var(--verde);padding:.6rem;width:100%}
+  p{margin:.2rem 0}
+}

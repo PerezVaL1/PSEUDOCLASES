@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idioma, dirección y estado · Pseudoclases CSS</title>
+<link rel="stylesheet" href="../assets/base.css"><link rel="stylesheet" href="styles.css"></head>
+<body><header class="top"><h1>Idioma, dirección y estado</h1><p>Idioma y dirección del texto, y estados de elementos nativos (details, dialog, popover, pantalla completa).</p><nav aria-label="Carpetas"><a href="../index.html">Inicio</a><a href="../01-accion-usuario/index.html">01 Acción del usuario</a><a href="../02-enlaces-ubicacion/index.html">02 Enlaces y ubicación</a><a href="../03-formularios/index.html">03 Formularios</a><a href="../04-estructurales/index.html">04 Estructurales</a><a href="../05-logicas/index.html">05 Lógicas y funcionales</a><a href="../06-idioma-y-estado/index.html" aria-current="page">06 Idioma, dirección y estado</a><a href="../07-multimedia/index.html">07 Multimedia</a><a href="../08-shadow-dom/index.html">08 Shadow DOM y componentes</a><a href="../09-compatibilidad/index.html">09 Detector de compatibilidad</a></nav></header>
+<main>
+<article class="demo" id="lang">
+<header><h3><code>:lang()</code><code>:dir()</code></h3></header>
+<div><div class="stage"><p class="lg" lang="es">Hola</p><p class="dr" dir="ltr">Texto de izquierda a derecha</p></div><div class="ctl"><button type="button" data-js="const p=d.querySelector(&#x27;.lg&#x27;),o=[&#x27;es&#x27;,&#x27;en&#x27;,&#x27;fr&#x27;],t={es:&#x27;Hola&#x27;,en:&#x27;Hello&#x27;,fr:&#x27;Bonjour&#x27;};p.lang=o[(o.indexOf(p.lang)+1)%3];p.textContent=t[p.lang];return &#x27;lang=&#x27;+p.lang">Cambiar idioma</button><button type="button" data-js="const p=d.querySelector(&#x27;.dr&#x27;);p.dir=p.dir==&#x27;rtl&#x27;?&#x27;ltr&#x27;:&#x27;rtl&#x27;;return &#x27;dir=&#x27;+p.dir">Cambiar dirección</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.lg{padding-left:.6rem;border-left:5px solid}
+.lg:lang(es){border-color:var(--verde)}
+.lg:lang(en){border-color:var(--amarillo)}
+.lg:lang(fr){border-color:var(--rojo)}
+.dr{padding:.4rem .6rem;width:100%}
+.dr:dir(ltr){border-left:5px solid var(--tinta)}
+.dr:dir(rtl){border-right:5px solid var(--rojo);text-align:right}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;p class=&quot;lg&quot; lang=&quot;es&quot;&gt;Hola&lt;/p&gt;&lt;p class=&quot;dr&quot; dir=&quot;ltr&quot;&gt;Texto de izquierda a derecha&lt;/p&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="open">
+<header><h3><code>:open</code></h3></header>
+<div><div class="stage"><details class="det"><summary>Abre y cierra</summary><p>Visible solo cuando está abierto.</p></details></div><div class="ctl"><button type="button" data-js="d.querySelector(&#x27;details&#x27;).toggleAttribute(&#x27;open&#x27;)">Abrir / cerrar</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.det{width:100%;border:2px solid var(--linea);padding:.5rem .8rem;border-radius:6px}
+.det:open{border-color:var(--verde);background:#EEF8E6}
+.det summary{cursor:pointer;font-weight:600}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;details class=&quot;det&quot;&gt;&lt;summary&gt;Abre y cierra&lt;/summary&gt;&lt;p&gt;Visible solo cuando está abierto.&lt;/p&gt;&lt;/details&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="modal">
+<header><h3><code>:modal</code><code>:popover-open</code></h3><p>Un dialog abierto con showModal() es :modal; con show() no lo es.</p></header>
+<div><div class="stage"><dialog class="dg"><p>Soy un diálogo.</p><form method="dialog"><button>Cerrar</button></form></dialog><div popover class="pp2">Soy un popover</div><button popovertarget="pp2x">Abrir popover</button></div><div class="ctl"><button type="button" data-js="d.querySelector(&#x27;dialog&#x27;).showModal()">showModal()</button><button type="button" data-js="d.querySelector(&#x27;dialog&#x27;).show()">show() (no modal)</button><button type="button" data-js="d.querySelector(&#x27;.pp2&#x27;).showPopover()">showPopover()</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.dg{border:3px dashed var(--linea);border-radius:8px;padding:1.2rem}
+.dg:modal{border:3px solid var(--verde)}
+.pp2:popover-open{border:3px solid var(--amarillo);padding:1rem;border-radius:8px}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;dialog class=&quot;dg&quot;&gt;&lt;p&gt;Soy un diálogo.&lt;/p&gt;&lt;form method=&quot;dialog&quot;&gt;&lt;button&gt;Cerrar&lt;/button&gt;&lt;/form&gt;&lt;/dialog&gt;&lt;div popover class=&quot;pp2&quot;&gt;Soy un popover&lt;/div&gt;&lt;button popovertarget=&quot;pp2x&quot;&gt;Abrir popover&lt;/button&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="pantalla">
+<header><h3><code>:fullscreen</code></h3></header>
+<div><div class="stage"><div class="fs">Zona normal</div></div><div class="ctl"><button type="button" data-js="d.querySelector(&#x27;.fs&#x27;).requestFullscreen()">Pantalla completa</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.fs{padding:1rem;background:#EEF2EB;border-radius:6px;width:100%}
+.fs:fullscreen{display:grid;place-items:center;background:var(--tinta);color:#fff;font-size:2rem}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;div class=&quot;fs&quot;&gt;Zona normal&lt;/div&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+</main>
+<script src="../assets/app.js"></script><script src="script.js"></script></body></html>

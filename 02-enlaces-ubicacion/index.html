@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enlaces y ubicación · Pseudoclases CSS</title>
+<link rel="stylesheet" href="../assets/base.css"><link rel="stylesheet" href="styles.css"></head>
+<body><header class="top"><h1>Enlaces y ubicación</h1><p>Estado de los enlaces y del fragmento (#) de la URL.</p><nav aria-label="Carpetas"><a href="../index.html">Inicio</a><a href="../01-accion-usuario/index.html">01 Acción del usuario</a><a href="../02-enlaces-ubicacion/index.html" aria-current="page">02 Enlaces y ubicación</a><a href="../03-formularios/index.html">03 Formularios</a><a href="../04-estructurales/index.html">04 Estructurales</a><a href="../05-logicas/index.html">05 Lógicas y funcionales</a><a href="../06-idioma-y-estado/index.html">06 Idioma, dirección y estado</a><a href="../07-multimedia/index.html">07 Multimedia</a><a href="../08-shadow-dom/index.html">08 Shadow DOM y componentes</a><a href="../09-compatibilidad/index.html">09 Detector de compatibilidad</a></nav></header>
+<main>
+<article class="demo" id="enlaces">
+<header><h3><code>:link</code><code>:visited</code><code>:any-link</code></h3><p>El primer enlace apunta a esta misma página, así que el navegador lo marca como visitado.</p></header>
+<div><div class="stage"><a class="lk" href="">Esta página (visitada)</a><a class="lk" href="https://example.org/nunca-visitado-xyz">Enlace nuevo</a><a class="lk">Sin href</a></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.lk:link{color:var(--verde-osc);font-weight:600}
+.lk:visited{color:#7B3FA0}
+.lk:any-link{text-decoration-thickness:2px;text-underline-offset:4px}
+.lk:not(:any-link){color:var(--gris)}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;a class=&quot;lk&quot; href=&quot;&quot;&gt;Esta página (visitada)&lt;/a&gt;&lt;a class=&quot;lk&quot; href=&quot;https://example.org/nunca-visitado-xyz&quot;&gt;Enlace nuevo&lt;/a&gt;&lt;a class=&quot;lk&quot;&gt;Sin href&lt;/a&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="target">
+<header><h3><code>:target</code></h3><p>Haz clic en los enlaces: la caja cuyo id coincide con el # de la URL se resalta.</p></header>
+<div><div class="stage"><a href="#caja1">Caja 1</a><a href="#caja2">Caja 2</a><a href="#quitar">Quitar</a><div class="cj" id="caja1">Caja 1</div><div class="cj" id="caja2">Caja 2</div></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.cj:target{background:var(--amarillo);font-weight:700;box-shadow:0 0 0 4px #FDC30066}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;a href=&quot;#caja1&quot;&gt;Caja 1&lt;/a&gt;&lt;a href=&quot;#caja2&quot;&gt;Caja 2&lt;/a&gt;&lt;a href=&quot;#quitar&quot;&gt;Quitar&lt;/a&gt;&lt;div class=&quot;cj&quot; id=&quot;caja1&quot;&gt;Caja 1&lt;/div&gt;&lt;div class=&quot;cj&quot; id=&quot;caja2&quot;&gt;Caja 2&lt;/div&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="target-within">
+<header><h3><code>:target-within</code></h3><p>Experimental. Se muestra con :has(:target) como alternativa y con :target-within donde exista.</p></header>
+<div><div class="stage"><div class="tw"><a href="#tw-a">Activar</a><p id="tw-a">Contenido dentro del contenedor</p></div></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.tw{padding:.7rem;border:2px solid var(--linea);border-radius:8px;width:100%}
+.tw:has(:target){border-color:var(--verde);background:#EEF8E6}
+@supports selector(:target-within){.tw:target-within{border-width:4px}}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;div class=&quot;tw&quot;&gt;&lt;a href=&quot;#tw-a&quot;&gt;Activar&lt;/a&gt;&lt;p id=&quot;tw-a&quot;&gt;Contenido dentro del contenedor&lt;/p&gt;&lt;/div&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="scope">
+<header><h3><code>:scope</code></h3><p>Dentro de @scope y en JavaScript, :scope es la raíz del alcance.</p></header>
+<div><div class="stage"><div class="sc"><p>Hijo directo</p><div><p>Nieto</p></div><p>Otro hijo</p></div></div><div class="ctl"><button type="button" data-js="const r=d.querySelector(&#x27;.sc&#x27;);return &#x27;:scope &gt; p = &#x27;+r.querySelectorAll(&#x27;:scope &gt; p&#x27;).length+&#x27;  |  p = &#x27;+r.querySelectorAll(&#x27;p&#x27;).length">Contar con :scope</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>@scope (.sc){
+  :scope{border:2px solid var(--verde);padding:.6rem;width:100%}
+  p{margin:.2rem 0}
+}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;div class=&quot;sc&quot;&gt;&lt;p&gt;Hijo directo&lt;/p&gt;&lt;div&gt;&lt;p&gt;Nieto&lt;/p&gt;&lt;/div&gt;&lt;p&gt;Otro hijo&lt;/p&gt;&lt;/div&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+</main>
+<script src="../assets/app.js"></script><script src="script.js"></script></body></html>

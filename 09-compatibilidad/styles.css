@@ -1,0 +1,6 @@
+/* Estilos de Detector de compatibilidad (el mismo CSS que ves en cada demo) */
+.fila{display:flex;justify-content:space-between;padding:.3rem .6rem;border-bottom:1px solid var(--linea)}.fila[hidden]{display:none}.fila.si span{color:var(--verde-osc);font-weight:700}.fila.no span{color:var(--rojo);font-weight:700}.fila.pg span{color:var(--gris)}#lista{width:100%;max-height:420px;overflow:auto}#lista h4{margin:.8rem 0 .2rem}
+@page{size:A4}
+@page :first{margin-top:4cm}
+@page :left{margin-right:3cm}
+@page :right{margin-left:3cm}

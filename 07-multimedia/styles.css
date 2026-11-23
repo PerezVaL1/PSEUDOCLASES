@@ -1,0 +1,9 @@
+/* Estilos de Multimedia (el mismo CSS que ves en cada demo) */
+.aw{width:100%}.aw::after{content:"⏸ En pausa";display:block;margin-top:.4rem;font-weight:600;color:var(--gris)}.aw:has(.au:playing)::after{content:"▶ Reproduciendo";color:var(--verde-osc)}
+.au{width:100%;border-radius:30px;outline:3px solid transparent;transition:.2s}
+.au:paused{outline-color:var(--linea)}
+.au:playing{outline-color:var(--verde)}
+.au:muted{opacity:.45}
+.au:seeking{outline-color:var(--amarillo)}
+.au:buffering,.au:stalled{outline-color:var(--rojo)}
+.au:volume-locked{filter:grayscale(1)}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formularios · Pseudoclases CSS</title>
+<link rel="stylesheet" href="../assets/base.css"><link rel="stylesheet" href="styles.css"></head>
+<body><header class="top"><h1>Formularios</h1><p>Estado, validación y rango de los campos. Los botones cambian el estado por ti.</p><nav aria-label="Carpetas"><a href="../index.html">Inicio</a><a href="../01-accion-usuario/index.html">01 Acción del usuario</a><a href="../02-enlaces-ubicacion/index.html">02 Enlaces y ubicación</a><a href="../03-formularios/index.html" aria-current="page">03 Formularios</a><a href="../04-estructurales/index.html">04 Estructurales</a><a href="../05-logicas/index.html">05 Lógicas y funcionales</a><a href="../06-idioma-y-estado/index.html">06 Idioma, dirección y estado</a><a href="../07-multimedia/index.html">07 Multimedia</a><a href="../08-shadow-dom/index.html">08 Shadow DOM y componentes</a><a href="../09-compatibilidad/index.html">09 Detector de compatibilidad</a></nav></header>
+<main>
+<article class="demo" id="estado">
+<header><h3><code>:enabled</code><code>:disabled</code></h3></header>
+<div><div class="stage"><input class="fe" value="Edítame"><button class="fbtn">Botón</button></div><div class="ctl"><button type="button" data-js="d.querySelectorAll(&#x27;input,button&#x27;).forEach(e=&gt;e.disabled=!e.disabled)">Alternar disabled</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.fe:enabled{border-color:var(--verde)}
+.fe:disabled,.fbtn:disabled{background:#E5E8E3;border-style:dashed;cursor:not-allowed;color:#8A948F}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;input class=&quot;fe&quot; value=&quot;Edítame&quot;&gt;&lt;button class=&quot;fbtn&quot;&gt;Botón&lt;/button&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="checked">
+<header><h3><code>:checked</code><code>:indeterminate</code></h3></header>
+<div><div class="stage"><label class="ck"><input type="checkbox" checked> Marcado</label><label class="ck"><input type="checkbox" class="ind"> Indeterminado</label><label class="ck"><input type="radio" name="rr" checked> Radio</label></div><div class="ctl"><button type="button" data-js="d.querySelector(&#x27;.ind&#x27;).indeterminate=true">Poner indeterminado</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.ck input{accent-color:var(--verde)}
+.ck:has(input:checked){font-weight:700;color:var(--verde-osc)}
+.ind:indeterminate{outline:3px solid var(--amarillo);outline-offset:2px}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;label class=&quot;ck&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt; Marcado&lt;/label&gt;&lt;label class=&quot;ck&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;ind&quot;&gt; Indeterminado&lt;/label&gt;&lt;label class=&quot;ck&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;rr&quot; checked&gt; Radio&lt;/label&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="requerido">
+<header><h3><code>:required</code><code>:optional</code><code>:placeholder-shown</code></h3></header>
+<div><div class="stage"><input class="fr" placeholder="Obligatorio" required><input class="fr b" placeholder="Opcional"></div><div class="ctl"><button type="button" data-js="const i=d.querySelector(&#x27;.b&#x27;);i.required=!i.required">Alternar required del 2.º</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.fr:required{border-left:6px solid var(--rojo)}
+.fr:optional{border-left:6px solid var(--linea)}
+.fr:placeholder-shown{background:#FFFBEA}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;input class=&quot;fr&quot; placeholder=&quot;Obligatorio&quot; required&gt;&lt;input class=&quot;fr b&quot; placeholder=&quot;Opcional&quot;&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="validez">
+<header><h3><code>:valid</code><code>:invalid</code><code>:user-valid</code><code>:user-invalid</code></h3><p>Escribe un correo. Las versiones user- esperan a que interactúes y salgas del campo.</p></header>
+<div><div class="stage"><input class="fv" type="email" placeholder="correo@sena.edu.co" required><input class="fu" type="email" placeholder="Con :user-invalid" required></div><div class="ctl"><button type="button" data-js="d.querySelectorAll(&#x27;input&#x27;).forEach(i=&gt;i.value=&#x27;ana@sena.edu.co&#x27;)">Rellenar con correo válido</button><button type="button" data-js="d.querySelectorAll(&#x27;input&#x27;).forEach(i=&gt;i.value=&#x27;&#x27;)">Vaciar</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.fv:valid{border-color:var(--verde);background:#EEF8E6}
+.fv:invalid{border-color:var(--rojo);background:#FDEEEA}
+.fu:user-invalid{border-color:var(--rojo);background:#FDEEEA}
+.fu:user-valid{border-color:var(--verde);background:#EEF8E6}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;input class=&quot;fv&quot; type=&quot;email&quot; placeholder=&quot;correo@sena.edu.co&quot; required&gt;&lt;input class=&quot;fu&quot; type=&quot;email&quot; placeholder=&quot;Con :user-invalid&quot; required&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="rango">
+<header><h3><code>:in-range</code><code>:out-of-range</code></h3><p>Permitido de 1 a 10.</p></header>
+<div><div class="stage"><input class="fn" type="number" min="1" max="10" value="5"></div><div class="ctl"><button type="button" data-js="d.querySelector(&#x27;input&#x27;).value=99">Poner 99</button><button type="button" data-js="d.querySelector(&#x27;input&#x27;).value=5">Poner 5</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.fn:in-range{border-color:var(--verde)}
+.fn:out-of-range{border-color:var(--rojo);background:#FDEEEA;color:var(--rojo)}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;input class=&quot;fn&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;10&quot; value=&quot;5&quot;&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="rw">
+<header><h3><code>:read-only</code><code>:read-write</code><code>:default</code></h3></header>
+<div><div class="stage"><input class="frw" value="Editable"><form class="fdef" onsubmit="return false"><label class="ck"><input type="radio" name="pl" checked> A (por defecto)</label><label class="ck"><input type="radio" name="pl"> B</label><button>Enviar</button></form></div><div class="ctl"><button type="button" data-js="const i=d.querySelector(&#x27;.frw&#x27;);i.readOnly=!i.readOnly">Alternar readonly</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.frw:read-only{background:#ECEFEA;color:var(--gris)}
+.frw:read-write{border-color:var(--verde)}
+.fdef input:default+*{color:var(--verde-osc)}
+.fdef button:default{background:var(--tinta);color:#fff}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;input class=&quot;frw&quot; value=&quot;Editable&quot;&gt;&lt;form class=&quot;fdef&quot; onsubmit=&quot;return false&quot;&gt;&lt;label class=&quot;ck&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;pl&quot; checked&gt; A (por defecto)&lt;/label&gt;&lt;label class=&quot;ck&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;pl&quot;&gt; B&lt;/label&gt;&lt;button&gt;Enviar&lt;/button&gt;&lt;/form&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="autofill">
+<header><h3><code>:autofill</code></h3><p>Si el navegador autocompleta el campo, cambia su fondo.</p></header>
+<div><div class="stage"><input class="fa" name="email" autocomplete="email" placeholder="Correo (autocompletable)"></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.fa:autofill{box-shadow:inset 0 0 0 40px #FDF3C0;border-color:var(--amarillo)}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;input class=&quot;fa&quot; name=&quot;email&quot; autocomplete=&quot;email&quot; placeholder=&quot;Correo (autocompletable)&quot;&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+</main>
+<script src="../assets/app.js"></script><script src="script.js"></script></body></html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lógicas y funcionales · Pseudoclases CSS</title>
+<link rel="stylesheet" href="../assets/base.css"><link rel="stylesheet" href="styles.css"></head>
+<body><header class="top"><h1>Lógicas y funcionales</h1><p>Combinan o excluyen selectores. :has() es el “selector padre”.</p><nav aria-label="Carpetas"><a href="../index.html">Inicio</a><a href="../01-accion-usuario/index.html">01 Acción del usuario</a><a href="../02-enlaces-ubicacion/index.html">02 Enlaces y ubicación</a><a href="../03-formularios/index.html">03 Formularios</a><a href="../04-estructurales/index.html">04 Estructurales</a><a href="../05-logicas/index.html" aria-current="page">05 Lógicas y funcionales</a><a href="../06-idioma-y-estado/index.html">06 Idioma, dirección y estado</a><a href="../07-multimedia/index.html">07 Multimedia</a><a href="../08-shadow-dom/index.html">08 Shadow DOM y componentes</a><a href="../09-compatibilidad/index.html">09 Detector de compatibilidad</a></nav></header>
+<main>
+<article class="demo" id="not">
+<header><h3><code>:not()</code></h3></header>
+<div><div class="stage"><ul class="ln"><li>A</li><li>B</li><li class="x">C (.x)</li></ul></div><div class="ctl"><button type="button" data-js="d.querySelectorAll(&#x27;li&#x27;)[1].classList.toggle(&#x27;x&#x27;)">Alternar .x en B</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.ln{list-style:none;padding:0;margin:0;width:100%}
+.ln li{padding:.4rem .7rem;margin:2px 0;background:#EEF2EB}
+.ln li:not(.x){background:var(--verde);color:#fff}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;ul class=&quot;ln&quot;&gt;&lt;li&gt;A&lt;/li&gt;&lt;li&gt;B&lt;/li&gt;&lt;li class=&quot;x&quot;&gt;C (.x)&lt;/li&gt;&lt;/ul&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="is">
+<header><h3><code>:is()</code><code>:where()</code></h3><p>:is() toma la especificidad del más fuerte; :where() siempre vale 0, por eso pierde frente a .isw .pp.</p></header>
+<div><div class="stage"><div class="isw"><h4>Título h4</h4><h5>Título h5</h5><p class="pp">Verde: gana .isw .pp</p><p>Rojo: :where(.isw) p</p></div></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.isw :is(h4,h5){background:var(--tinta);color:#fff;padding:.3rem .6rem;margin:.2rem 0}
+:where(.isw) p{color:var(--rojo)}
+.isw .pp{color:var(--verde-osc)}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;div class=&quot;isw&quot;&gt;&lt;h4&gt;Título h4&lt;/h4&gt;&lt;h5&gt;Título h5&lt;/h5&gt;&lt;p class=&quot;pp&quot;&gt;Verde: gana .isw .pp&lt;/p&gt;&lt;p&gt;Rojo: :where(.isw) p&lt;/p&gt;&lt;/div&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+<article class="demo" id="has">
+<header><h3><code>:has()</code></h3><p>Marca la casilla (el padre cambia) y pasa el mouse sobre las tarjetas (las demás se atenúan).</p></header>
+<div><div class="stage"><label class="th"><input type="checkbox"> Activar tarjeta</label><div class="crd3"><div>Uno</div><div>Dos</div><div>Tres</div></div></div><div class="ctl"><button type="button" data-js="d.querySelector(&#x27;.th input&#x27;).click()">Marcar / desmarcar</button></div><output class="out"></output></div>
+<div class="code"><details open><summary>CSS</summary><pre><code>.th{display:flex;gap:.6rem;padding:.8rem 1rem;border:2px solid var(--linea);border-radius:8px;width:100%;transition:.2s}
+.th:has(input:checked){background:#EEF8E6;border-color:var(--verde);box-shadow:0 4px 0 var(--verde)}
+.crd3:has(&gt; div:hover) &gt; div:not(:hover){opacity:.35;transform:scale(.96)}</code></pre><button class="copy" type="button">Copiar</button></details>
+<details><summary>HTML</summary><pre><code>&lt;label class=&quot;th&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt; Activar tarjeta&lt;/label&gt;&lt;div class=&quot;crd3&quot;&gt;&lt;div&gt;Uno&lt;/div&gt;&lt;div&gt;Dos&lt;/div&gt;&lt;div&gt;Tres&lt;/div&gt;&lt;/div&gt;</code></pre><button class="copy" type="button">Copiar</button></details></div>
+</article>
+</main>
+<script src="../assets/app.js"></script><script src="script.js"></script></body></html>
